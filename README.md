@@ -1,32 +1,44 @@
 # create-discord-app-templates
 
-This repository hosts the official templates used by the [`create-discord-app`](https://github.com/dipanshu447/create-discord-app) CLI tool, a modern scaffolding tool for quickly bootstrapping Discord bots using **Discord.js (v14+)**.
+<div align="center">
+
+![Discord Templates](https://img.shields.io/badge/Discord-Templates-5865F2?style=for-the-badge\&logo=discord\&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge\&logo=open-source-initiative\&logoColor=white)](https://opensource.org/licenses/MIT)
+
+**Official Templates for [`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app)** - A modern CLI to scaffold production-ready Discord bots.
+
+</div>
+
+---
+
+## What is this?
+
+This repository hosts the official templates used by the [`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app) CLI tool — a scaffolding utility for building production-ready bots using **Discord.js (v14+)**.
 
 > When you run:
 >
 > ```bash
-> npm create discord-app
+> npm create @dipanshu/discord-app
 > ```
 >
-> You're using this repo behind the scenes to scaffold your new project.
-
----
+> This repo powers the templates used to scaffold your new bot project.
 
 ## Template Structure
 
-Each folder in this repository represents a distinct project template, categorized by language.
+Each folder in this repository represents a distinct project template, categorized by language:
 
 ```
-create-discord-app-templates/
+discord-app-templates/
 ├── js/              # JavaScript templates
 ├── ts/              # TypeScript templates (coming soon)
-├── py/              # Python-based templates (coming soon)
+├── py/              # Python templates (coming soon)
 └── README.md        # This file
 ```
 
 ## Templates Included
 
-### `js` (Default)
+### `js/` (Default)
 
 A clean, production-ready JavaScript template with:
 
@@ -36,42 +48,58 @@ A clean, production-ready JavaScript template with:
 * Built-in ESLint support
 * Clear, scalable folder structure
 
-> Used by default when no template is specified.
+> This is the default template used when no language or template is explicitly specified.
 
-## How This Repository Works
+## How This Works
 
-This repo is consumed by [`degit`](https://github.com/Rich-Harris/degit) inside the `create-discord-app` CLI. This means:
+This repo is consumed by [`degit`](https://github.com/Rich-Harris/degit) inside the `@dipanshu/discord-app` CLI.
 
-* No Git history is cloned.
-* Only the raw files from the `js/` directory are copied to the user's project folder.
+* No Git history is cloned
+* Only the raw files from the template folder (e.g., `js/`) are copied into your new project directory
 
-## Adding More Templates
+## Adding Your Own Templates
 
-Want to contribute more templates?
+Want to contribute a new template? Awesome! Here's how:
 
-1. Create a new folder like `/ts`, `/py`, etc.
-2. Follow the same structure as `/js`
-3. Open a PR with a description and use case
+1. Create a new folder like `ts/`, `py/`, etc.
+2. Follow the structure and conventions used in `js/`
+3. Make sure it includes at least a working `index.js` (or relevant entry point) and a `README.md`
+4. Open a Pull Request with a clear description and use case
 
-## Used With
+## Built With
 
-* [`create-discord-app`](https://github.com/dipanshu447/create-discord-app) – the CLI tool that consumes this repo
-* [`Discord.js`](https://discord.js.org) – the core library powering your bot
-* [`dotenv`](https://www.npmjs.com/package/dotenv) – for config loading
-* [`ESLint`](https://eslint.org/) – for code style
+These templates are designed to work out-of-the-box with:
 
-## License
-
-This repository is MIT-licensed. Use freely, contribute openly.
-
-## Contributing
-
-Suggestions, bug fixes, or ideas for more templates? PRs and issues are always welcome!
+* **[`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app)** – The CLI tool that uses these templates
+* **[`Discord.js`](https://discord.js.org)** – Core library for Discord bots
+* **[`dotenv`](https://www.npmjs.com/package/dotenv)** – For secure environment variable handling
+* **[`ESLint`](https://eslint.org/)** – For JavaScript code quality and consistency
 
 ---
 
-### Ready to Build?
+## License
 
-Start with [`create-discord-app`](https://github.com/dipanshu447/create-discord-app), and let this repo handle the boilerplate.
+MIT © 2025 [Dipanshu Sahu](https://github.com/dipanshu447)
 
-**Happy coding!**
+Use freely, fork openly, and contribute improvements!
+
+## Contributing
+
+PRs and issues are always welcome ❤️
+
+* Suggest new templates
+* Report bugs
+* Improve structure or configuration
+
+
+### Ready to Get Started?
+
+Use the CLI:
+
+```bash
+npm create @dipanshu/discord-app
+```
+
+And let this repo handle the rest.
+
+**Happy building!**

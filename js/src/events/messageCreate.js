@@ -15,7 +15,7 @@ export default {
             
             // Attempt to notify the user, if permissions allow
             try {
-                await message.reply('⚠️ Something went wrong while processing your message.');
+                await message.reply('Something went wrong while processing your message.');
             } catch (err) {
                 console.error('Also failed to send error message:', err);
             }

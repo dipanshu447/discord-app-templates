@@ -3,7 +3,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { fileURLToPath } from 'node:url';
 
-// Setup __dirname in ES module
+// Setup __dirname in ES module (equivalent to CommonJS's __dirname)
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__fileName);
 
@@ -15,6 +15,7 @@ export async function registerEvents(client) {
             const entryPath = path.join(eventsPath, entry);
             const isDirectory = fs.statSync(entryPath).isDirectory();
             if (isDirectory) {
+                // Load all .js files inside a subfolder
                 const eventFiles = fs.readdirSync(entryPath).filter(file => file.endsWith('.js'));
                 for (const file of eventFiles) {
                     const filePath = path.join(entryPath, file);
@@ -25,6 +26,7 @@ export async function registerEvents(client) {
                         continue;
                     }
     
+                    // Register the event based on once/on config
                     if (event.once) {
                         client.once(event.name, (...args) => event.execute(...args));
                     } else {
@@ -34,6 +36,7 @@ export async function registerEvents(client) {
                     console.log(`Registered event: ${event.name} (${event.once ? 'once' : 'on'})`);
                 }
             } else if (entry.endsWith('.js')) {
+                // Handle flat .js files directly in /events
                 const event = (await import(pathToFileURL(entryPath).href)).default;
                 if (!event.name || typeof event.execute !== 'function') {
                     console.log(`[WARNING] The event at ${entryPath} is missing a "name" or "execute" function.`);
@@ -50,7 +53,7 @@ export async function registerEvents(client) {
             }
         }
     } catch (error) {
-        console.error(error);
+        console.error('Error while registering events:', error);
     }
 
 }

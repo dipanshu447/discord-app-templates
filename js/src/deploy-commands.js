@@ -4,13 +4,15 @@ import { Routes, REST } from 'discord.js';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import config from './config.js';
 
+// Setup __dirname in ES module (equivalent to CommonJS's __dirname)
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__fileName);
-const foldersPath = path.join(__dirname, 'commands');
+
+const foldersPath = path.join(__dirname, 'commands'); // Path to the commands folder
 
 console.log('Starting command deploy script...');
-const commands = [];
-const rest = new REST().setToken(config.token);
+const commands = []; // Initialize an array to collect command definitions
+const rest = new REST().setToken(config.token); // Create REST instance with bot token for API requests
 (async () => {
     try {
         const commandsFolder = fs.readdirSync(foldersPath);
@@ -19,6 +21,7 @@ const rest = new REST().setToken(config.token);
             const entryPath = path.join(foldersPath, entry);
             const isDirectory = fs.statSync(entryPath).isDirectory();
             if (isDirectory) {
+                // Folder-based command organization
                 console.log(`Found folder: ${entry}`);
                 const commandFiles = fs.readdirSync(entryPath).filter(file => file.endsWith('.js'));
                 for (const file of commandFiles) {
@@ -32,6 +35,7 @@ const rest = new REST().setToken(config.token);
                     }
                 }
             } else if (entry.endsWith('.js')) {
+                // If command files are directly inside /commands
                 console.log(`Processing file: ${entry}`);
                 const command = (await import(pathToFileURL(entryPath).href)).default;
                 if ('data' in command && 'execute' in command) {
@@ -43,11 +47,12 @@ const rest = new REST().setToken(config.token);
         }
 
         if (commands.length === 0) {
-            console.warn('⚠️ No valid commands found to register.');
+            console.warn('No valid commands found to register.');
             return;
         }
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
+        // Global registration (uncomment for public bots)
         // const data = await rest.put(
         //     Routes.applicationCommands(config.appid),
         //     { body: commands },
@@ -61,6 +66,6 @@ const rest = new REST().setToken(config.token);
 
         console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     } catch (error) {
-        console.error(error);
+        console.error('Failed to register commands:', error);
     }
 })()

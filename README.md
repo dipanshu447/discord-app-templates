@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Discord Templates](https://img.shields.io/badge/Discord-Templates-5865F2?style=for-the-badge\&logo=discord\&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-24%2B-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge\&logo=open-source-initiative\&logoColor=white)](https://opensource.org/licenses/MIT)
 
 **Official Templates for [`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app)** - A modern CLI to scaffold production-ready Discord bots.
@@ -14,7 +14,7 @@
 
 ## What is this?
 
-This repository hosts the official templates used by the [`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app) CLI tool — a scaffolding utility for building production-ready bots using **Discord.js (v14+)**.
+This repository hosts the official templates used by the [`@dipanshu/discord-app`](https://github.com/dipanshu447/create-discord-app) CLI tool - a scaffolding utility for building production-ready bots using **Discord.js (v14+)**.
 
 > When you run:
 >
